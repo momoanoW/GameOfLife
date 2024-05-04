@@ -1,0 +1,163 @@
+
+Game of Life
+01.05.24
+
+Attributes to the game:
+
+1. boolean cell
+- each cell has two states: boolean isAlive true / false -> VARIABLE
+- each cell is one object of Cell class -> CONSTRUCTOR public Cell(boolean isAlive){this.isAlive = isAlive;}
+- each state has an own symbol (true : * ) (false : . ) -> PRINT-METHOD
+- each cell can change its individual state of the next Generation in dependency to its individual environment of the current Generation -> COMPUTE-METHOD {if(this.isAlive) + rules & if(!this.isAlive) + rules}
+- each cell has an int numberOfNeighbors: On an endless grid, each cell has normally 8 neighbors. But we can't work with an endless amount of cells here. So we set [10][10]. Therefore each cell has an individual amount of neighbors between 3 and 8 -> COMPUTE-METHOD gives out int VARIABLE
+
+2. grid of boolean cells => double boolean Array => one object of Generation class
+- each double Array is one object of Generation class -> CONSTRUCTOR {[Cell[][] grid = new Cell[][]}
+- length of the Arrays (amount of cells) is theoretically endlessly long, but for us here we set for example index = [10][10]
+- the first grid is filled out randomly with boolean cells -> FILLOUT-METHOD with Random class
+- each next grid develops its individual boolean states (isAlive) in dependency to the current grid -> COMPUTE-METHOD gets VARIABLES boolean isAlive and int numberOfNeighbors
+- each grid uses the PRINT-METHOD of Cell to prepare a formatted grid-print -> TOSTRING-METHOD
+
+3. game object of Game class
+- each game has an int numberOfGenerations -> VARIABLE
+- each game gets number of grids by Main class -> CONSTRUCTOR public Game(int numberOfGrids){grid = new Generation(); this.numberOfGrids = numberOfGrids;}
+- each game starts the development-step of grids -> SIMULATE-METHOD, that takes int numberOfGrids, then starts FILLOUT-METHOD, prints it with TOSTRING-METHOD, and continues with COMPUTE-METHOD for each grid and prints it as well with TOSTRING-METHOD
+
+4. Main class
+- sets how many grids there should be. Normally endless, but here we take e.g. 10 grids -> SETTER Game game = new Game(10)
+- starts the SIMULATE-METHOD for the amount of numberOfGrids -> game.SIMULATE-METHOD(numberOfGrids)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. KLasse "Spielplan"
+Darin enthalten: 
+- 2 verschachtelte Arrays (geben Größe des SPielfelds vor)
+- als Variablen ? Status "tot" und Status "lebendig"
+- 
+
+-------------------------------------------------------
+2. Klasse "Spielablauf"
+- regelt die Generationen / Zustände der einzelnen Zellen
+- beinhaltet Regeln 
+
+
+----------------------------------------------------
+Klasse "Spiel"
+- 
+
+
+Attribute:
+1. state : State of each grid-cellule (dead / alive)
+- double array of booleans of size x * y
+- ((T. F. T), (F. T. F)) is an example of a 3*2 double array
+- one first state-generator (Random)
+
+(2. generation: Number of the current generation (int))
+
+
+
+
+
+There is no winner and no player
+
+
+
+Methods: Situation -> (input?) -> action -> output? 
+1. Play :
+- Situation : when the game starts
+- Input : initialInput or none dependning on implementation
+- Action : runs the game until its either won, lost, or equal
+- Output : the winning player if one
+
+
+
+
+
+
+0. Main function
+Situation : the program is executed to start the game
+Action :
+- Fill the array
+- run the generations logic
+	for each generation :
+	    ...
+	    - compute the number of d o A
+	    ...
+	 generations++
+
+1. Fill the Array # OK
+Situation: At the beginning of the game
+Action: fill the double-array randomly
+Input: double-Array, class Random
+Output: first generation of state # Quel type ?
+Is called by : the main loop
+Requires other methods : no
+
+
+2. Number of dead or alive neighbors # of what ? The whole array ? # Computer number of neighbourg
+Situation: At the end of the current generation
+Action: Calculate for each cell how many dead or alive neighbors
+Input: double-Array, boolean-switch "has been changed" #  this.state ?
+Output: int-array (?) of how many dead or alive neighbors # A double array of integers. Also you cant compute both
+Is called by : the generation loop (method ?)
+
+
+Alternative [2b. Number of dead or alive neighbors # of what a single cell 
+Situation: At the end of the current generation
+Action: Calculate for each cell how many dead or alive neighbors
+Input: (x, y), coordinates of the cell to analyze
+Output: integer]
+	
+3. Pass-organizer # create_new_generation
+Situation : At the end of the current generation # Incompatible with the statement in *Action*
+Action : for() loop that organizes the pass of generations (never stops)
+Input : double-Array, rules, boolean-switch that says "whole double-array has been changed"
+Output : a renewed state of each cellule, a boolean-switch "has been changed" # Unclear, seems complicated
+
+4. Rules
+Situation: At the end of the current generation
+Action: Implement the rules to change the state by if-conditions (depending on how many neighbors dead/alive)
+Input: double-Array, boolean-switch "has been changed", int-array of how many dead or alive neighbors
+Output: if-conditions (?)
+
+5. 
+
+
+
+
+
+
+Print the grid
+Situation : During the whole game
+Action: 
+Input:
+Output:
